@@ -2,24 +2,24 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-dummyStack = []
+dummyQueue = []
 for i in range(n):
 	commands = input().split()
-	if commands[0] == 'push': dummyStack.append(int(commands[1]))
+	if commands[0] == 'push': dummyQueue.append(int(commands[1]))
 	elif commands[0] == 'pop': 
-		if not dummyStack:
+		if not dummyQueue:
 			print(-1)
 		else:
-			print(dummyStack.pop(0))
-	elif commands[0] == 'size': print(len(dummyStack))
-	elif commands[0] == 'empty': print(int(not dummyStack))
+			print(dummyQueue.pop(0))
+	elif commands[0] == 'size': print(len(dummyQueue))
+	elif commands[0] == 'empty': print(int(not dummyQueue))
 	elif commands[0] == 'front':
-		if not dummyStack:
+		if not dummyQueue:
 			print(-1)
 		else:
-			print(dummyStack[0])
+			print(dummyQueue[0])
 	elif commands[0] == 'back':
-		if not dummyStack:
+		if not dummyQueue:
 			print(-1)
 		else:
-			print(dummyStack[-1])
+			print(dummyQueue[-1])
