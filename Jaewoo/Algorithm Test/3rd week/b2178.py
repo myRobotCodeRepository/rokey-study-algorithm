@@ -29,18 +29,21 @@ arrive = (n-1, m-1)
 dist = [[0]*m for _ in range(n)]
 dist[0][0] = 1
 udlr = [(-1,0), (1,0), (0,-1), (0,1)]
-flag = False
+# flag = False
+# 미래 움직일 장소에서 while문을 stop하지 않고, 현재 위치가 목표 위치에 도달하면 stop하도록 함
 while dummyDeque:
     pos = dummyDeque.popleft()
-    mazeMat[pos[0]][pos[1]] = 0
+    if pos == arrive: break
+    # mazeMat[pos[0]][pos[1]] = 0   # 업데이트 시점을 pos에서 mov로
     for ori in udlr:
         mov = (pos[0]+ori[0], pos[1]+ori[1])
         if mov[0] in range(n) and mov[1] in range(m) and mazeMat[mov[0]][mov[1]] == 1:
             dummyDeque.append(mov)
             dist[mov[0]][mov[1]] = dist[pos[0]][pos[1]] + 1
-            if mov == arrive: 
-                flag = True # 연산자 잘못 넣음(== => =)
-                break
-    if flag == True: break
+            mazeMat[mov[0]][mov[1]] = 0
+    #         if mov == arrive: 
+    #             flag = True # 연산자 잘못 넣음(== => =)
+    #             break
+    # if flag == True: break
 
 print(dist[arrive[0]][arrive[1]])
