@@ -22,7 +22,10 @@ for i in range(n):
 pos = ()
 dummyDeque = deque([(0,0)])
 arrive = (n-1, m-1)
-distDict = {(0,0): 1}
+# distDict = {(0,0): 1}
+# Dictation이 오히려 해시/튜플 생성 오버헤드가 커서 성능 저하를 불러일으킬 수 있다고 함.
+dist = [[0]*m for _ in range(n)]
+dist[0][0] = 1
 udlr = [(-1,0), (1,0), (0,-1), (0,1)]
 flag = False
 while dummyDeque:
@@ -32,13 +35,13 @@ while dummyDeque:
         mov = (pos[0]+ori[0], pos[1]+ori[1])
         if mov[0] in range(n) and mov[1] in range(m) and mazeMat[mov[0]][mov[1]] == 1:
             dummyDeque.append(mov)
-            distDict[mov] = distDict[pos] + 1
+            dist[mov[0]][mov[1]] = dist[pos[0]][pos[1]] + 1
             if mov == arrive: 
-                flag = True
+                flag = True # 연산자 잘못 넣음(== => =)
                 break
     if flag == True: break
 
-print(distDict[arrive])
+print(dist[arrive[0]][arrive[1]])
         
 
 
