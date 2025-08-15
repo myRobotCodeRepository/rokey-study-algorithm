@@ -15,7 +15,7 @@ for i in range(n):
     # for j in range(m):
     #     dummyList.append(int(dummy[j]))
     # mazeMat.append(dummyList)
-    # 최적화 작업
+    # 최적화 작업 - 근본적인 성능 문제가 아님
     mazeMat.append([int(char) for char in input().strip()])
 
 # BFS
@@ -34,7 +34,7 @@ while dummyDeque:
             dummyDeque.append(mov)
             distDict[mov] = distDict[pos] + 1
             if mov == arrive: 
-                flag == True
+                flag = True
                 break
     if flag == True: break
 
