@@ -9,14 +9,16 @@ m = int(m)
 mazeMat = []
 
 # 미로 설정
-for i in range(n):
-    # dummy = input()
-    # dummyList = []
-    # for j in range(m):
-    #     dummyList.append(int(dummy[j]))
-    # mazeMat.append(dummyList)
-    # 최적화 작업 - 근본적인 성능 문제가 아님
-    mazeMat.append([int(char) for char in input().strip()])
+# for i in range(n):
+#     # dummy = input()
+#     # dummyList = []
+#     # for j in range(m):
+#     #     dummyList.append(int(dummy[j]))
+#     # mazeMat.append(dummyList)
+#     # 최적화 작업 - 근본적인 성능 문제가 아님
+#     mazeMat.append([int(char) for char in input().strip()])
+# 최적화 작업 - input 전체를 list comprehension으로
+mazeMat = [list(map(int, input().strip())) for _ in range(n)]
 
 # BFS
 pos = ()
@@ -42,11 +44,3 @@ while dummyDeque:
     if flag == True: break
 
 print(dist[arrive[0]][arrive[1]])
-        
-
-
-
-
-
-
-
