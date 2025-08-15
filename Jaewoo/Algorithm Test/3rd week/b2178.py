@@ -10,11 +10,13 @@ mazeMat = []
 
 # 미로 설정
 for i in range(n):
-    dummy = input()
-    dummyList = []
-    for j in range(m):
-        dummyList.append(int(dummy[j]))
-    mazeMat.append(dummyList)
+    # dummy = input()
+    # dummyList = []
+    # for j in range(m):
+    #     dummyList.append(int(dummy[j]))
+    # mazeMat.append(dummyList)
+    # 최적화 작업
+    mazeMat.append([int(char) for char in input().strip()])
 
 # BFS
 pos = ()
